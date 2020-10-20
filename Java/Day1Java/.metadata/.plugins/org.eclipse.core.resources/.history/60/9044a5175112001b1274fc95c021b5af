@@ -1,0 +1,8 @@
+package com.revature.depend;
+
+public class Car {
+	String model;
+	String make;
+	String color;
+	Engine engine;
+}
