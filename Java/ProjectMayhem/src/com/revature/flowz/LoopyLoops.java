@@ -33,10 +33,13 @@ public class LoopyLoops {
 		doWileyWhile(564);
 	}
 	
-	public static void ifMethod(int a,int b){
+	public static void ifMethod(int a,int b){// a and b are method scope
 		if(a>b) {
+			int c=0;//block scope
+			c=a+b;
 			System.out.println("This is true!");
 		}else if(a==6) {
+			int c=3+9+b;
 			System.out.println("Roll Tide");
 		}else if(b==8){
 			System.out.println("Go Team!");
@@ -70,6 +73,7 @@ public class LoopyLoops {
 	 public static void forLoopFunness(int p) {
 		 for(int i=0;i<p;i++) {
 			 if(i==6) {
+				 int d=9;
 				 break;
 				 //continue;
 			 }

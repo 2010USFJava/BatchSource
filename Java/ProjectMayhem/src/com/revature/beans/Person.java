@@ -25,6 +25,11 @@ Pillars of OOP
 	
 */
 public class Person {
+	static{ //runs when this class is FIRST loaded into the compiler
+		System.out.println("I am in a static code block");
+	}
+	//Instance Code Block
+	{System.out.println("I am in an instance code block");}
 	/*bean- represents some entity
 	More for data structure 
 	Makeup:
@@ -59,10 +64,12 @@ public class Person {
 	//no args constructor
 	 public Person (){
 		//super();
+		 System.out.println("I am in the no args constructor");
 	}
 	
 	 //constructor with fields
 	 public Person(String name,int age,int weight) {
+		 System.out.println("I am in the param constructor");
 		 this.name=name;
 		 this.age=age;
 		 this.weight=weight;
