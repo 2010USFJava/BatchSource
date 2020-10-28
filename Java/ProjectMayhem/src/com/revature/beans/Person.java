@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 import com.revature.classtypes.Mammal;
+import com.revature.exceptions.IncreasedByNegativeNumberException;
 
 /*Java is an object oriented language
 objects have states and behavior
@@ -121,7 +122,12 @@ public class Person extends Mammal {
 	}
 
 	
-	
+	public void increaseAgeBy(int x) throws IncreasedByNegativeNumberException {
+		if(x<=0) {
+			throw new IncreasedByNegativeNumberException();
+		}
+		this.age+=x;
+	}
 	 
 	 
 	 
