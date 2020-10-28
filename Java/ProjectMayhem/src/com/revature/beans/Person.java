@@ -1,4 +1,7 @@
 package com.revature.beans;
+
+import com.revature.classtypes.Mammal;
+
 /*Java is an object oriented language
 objects have states and behavior
 Class- template for an object
@@ -24,7 +27,7 @@ Pillars of OOP
 	-"what it does, not how it does it"
 	
 */
-public class Person {
+public class Person extends Mammal {
 	static{ //runs when this class is FIRST loaded into the compiler
 		System.out.println("I am in a static code block");
 	}
@@ -103,6 +106,18 @@ public class Person {
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + ", weight=" + weight +
 				", homePlanet= "+homePlanet+"]";
+	}
+
+	@Override
+	public void findPrey() {
+		System.out.println("I go to whole foods and buy sweet potatoes!");
+		
+	}
+
+	@Override
+	public void breathe() {
+		System.out.println(" I breathe fresh air from the city!");
+		
 	}
 
 	
