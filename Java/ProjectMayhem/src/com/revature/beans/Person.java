@@ -1,5 +1,7 @@
 package com.revature.beans;
 
+import java.io.Serializable;
+
 import com.revature.classtypes.Mammal;
 import com.revature.exceptions.IncreasedByNegativeNumberException;
 
@@ -28,7 +30,11 @@ Pillars of OOP
 	-"what it does, not how it does it"
 	
 */
-public class Person extends Mammal {
+public class Person extends Mammal implements Serializable {//Marker interface or Tag- no methods in it
+	
+	private static final long serialVersionUID = 2722279129588312875L;
+
+
 	static{ //runs when this class is FIRST loaded into the compiler
 		System.out.println("I am in a static code block");
 	}
