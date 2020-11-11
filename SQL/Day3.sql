@@ -35,4 +35,9 @@ delete from pookiemans;
 select * from pookiemans;
 rollback;
 
+select "Name","ArtistId" 
+from "Artist"
+where "ArtistId" <50 and "ArtistId" >13;
 
+select count("Country") countbycountry,"Country" 
+from "Customer";
