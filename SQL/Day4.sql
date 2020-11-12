@@ -33,6 +33,9 @@ INSERT INTO STUDENT VALUES(8, 'Roger Moore',3);
 INSERT INTO STUDENT VALUES(9, 'Brad',2);
 INSERT INTO STUDENT VALUES(10, 'Darth Vader',5);
 
+select * from school;
+
+select * from student;
 --Inner
 select * from student inner join school
 on student.sch_id=school.sch_id;
@@ -61,6 +64,8 @@ INSERT INTO STUDENT2 VALUES(4, 'HANN',3);
 INSERT INTO STUDENT2 VALUES(5, 'KEN',2);
 INSERT INTO STUDENT2 VALUES(6, 'LEVI',1);
 
+select *from student2;
+
 select a.name as student, b.name as lab_partner
 from student2 a join student2 b
 on a.lab_partner =b.id;
@@ -82,6 +87,7 @@ select "City" from "Customer";
 select "Country" from "Employee"
 intersect all
 select "Country" from "Customer";
+
 --Except and Except ALL
 select "name" from "student2"
 except
@@ -148,7 +154,7 @@ CREATE or replace FUNCTION dup2(out f1 text, out f2 int,in int, in text)
     SELECT $2,$1;$$
     LANGUAGE SQL;
     
-   SELECT * FROM dup2(42,'roll tide');
+  SELECT * FROM dup2(42,'roll tide');
    
    CREATE or replace FUNCTION dup3(out f1 text, out f2 int,in int, in text)
     AS $$ 
@@ -245,3 +251,30 @@ insert into "Customer" ("CustomerId","FirstName" , "LastName","Email" )
 values(93,'tim','bob','a@a');
 
 select now();
+
+
+
+create or replace function breakthis()
+returns trigger as $$
+begin
+	if(TG_OP = 'INSERT') then
+	new."LastName" = 'Smith';
+	end if; 
+	return new;
+end;
+$$ language sql;
+
+  create or replace function breakme()
+   returns integer as $$
+   declare
+   				total integer;
+begin
+	select count("EmployeeId") into total from "Employee";
+		return total;
+end;
+$$ language plpgsql;
+
+ CREATE or replace FUNCTION dup5(out f1 text, out f2 int,in int, in text)
+    AS $$ 
+    select $2 ||'woo', $1+1;$$
+    LANGUAGE sql;
