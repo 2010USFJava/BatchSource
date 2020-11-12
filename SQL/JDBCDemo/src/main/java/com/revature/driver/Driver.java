@@ -1,24 +1,33 @@
 package com.revature.driver;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.revature.beans.Album;
-import com.revature.daoimpl.AlbumDaoImpl;
+import com.revature.beans.Pookieman;
+import com.revature.dao.PookiemanDao;
+import com.revature.daoimpl.PookiemanDaoImpl;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		AlbumDaoImpl adi=new AlbumDaoImpl();
+//		AlbumDaoImpl adi=new AlbumDaoImpl();
+//		try {
+//			List<Album> aList= (ArrayList<Album>)adi.getAllAlbums();
+//			System.out.println(aList.toString());
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		PookiemanDao pd= new PookiemanDaoImpl();
+		
 		try {
-			List<Album> aList= (ArrayList<Album>)adi.getAllAlbums();
-			System.out.println(aList.toString());
+			//pd.catchNewPookieman( new Pookieman(52,"Meowth"));
+			//If no rows in result set, you will get  a NPE
+			Pookieman p=pd.retrieveById(5);
+			System.out.println(p.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }

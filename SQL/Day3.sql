@@ -40,4 +40,21 @@ from "Artist"
 where "ArtistId" <50 and "ArtistId" >13;
 
 select count("Country") countbycountry,"Country" 
-from "Customer";
+from "Customer"
+group by "Country"
+having count("Country")>1
+order by count("Country") DESC;
+
+--Aggregate Funcitons
+select avg("UnitPrice")
+from "Track";
+
+select count("TrackId") totalNumberOfTracks
+from "Track";
+
+--Scalar Functions
+select length("Title")
+from "Album";
+
+select * from "Album";
+
