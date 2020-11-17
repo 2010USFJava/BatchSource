@@ -1,0 +1,18 @@
+div{
+    background-color: darkorchid;
+}
+
+#myId{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.myClass{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.box1{
+    width: 320px;
+    padding: 10px;
+    border: 25px solid gray;
+    margin: 30px;
+}

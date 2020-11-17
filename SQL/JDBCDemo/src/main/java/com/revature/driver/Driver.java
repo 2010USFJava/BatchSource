@@ -20,10 +20,10 @@ public class Driver {
 		PookiemanDao pd= new PookiemanDaoImpl();
 		
 		try {
-			//pd.catchNewPookieman( new Pookieman(52,"Meowth"));
+			pd.catchNewPookieman( new Pookieman(1,"bulbasaur"));
 			//If no rows in result set, you will get  a NPE
-			Pookieman p=pd.retrieveById(5);
-			System.out.println(p.toString());
+//			Pookieman p=pd.retrieveById(1);
+//			System.out.println(p.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
