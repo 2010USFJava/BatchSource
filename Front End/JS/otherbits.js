@@ -65,6 +65,23 @@ for (let shark of sharkString) {
     console.log(shark);
 }
 
+//Template Literal!
+const string = `Hey
+this
+
+string
+is awesome!`
+
+const myVariable = 'test'
+const string = `something ${myVariable}` //something test
+
+const string3 = `something ${1 + 2 + 3}`
+function doSomething(){
+return true;
+}
+const string4 = `something ${doSomething() ? 'x' : 'y'}`
+
+
 //Arrows Functions
 //No args
 const name = "Steve";
@@ -164,11 +181,3 @@ function divide1(a, b) {
   
   const divide4 = (a, b) => a / b;
 
-  //Template Literals
-  const string = `Hey
-this
-
-string
-is awesome!`
-
-console.log(string);
