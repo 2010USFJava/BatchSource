@@ -140,3 +140,38 @@ var conFunc = function(a,b){
 Human.getInfo=function(){
     return this.age;
 }
+/*Scopes
+Global Scope
+        anything declared outside of a function
+        accessible anywhere    
+
+Function scope
+        Things that are declared inside a function
+        use the "var" or "let" keyword
+        if we leave out the "var" keyword- creates an implicit global
+
+Block scope
+    things declared in a block of code- ex loop
+    use "let" keyword 
+    "var" escape this scope
+    
+    Shadowing
+        if multiple variables have the same name,
+         JS will use the one that was declared the most recently.
+        Variable name clashes are bad. Difficult to debug and test.
+    "let" does not escape blocks, "var" does
+Hoisting- moving declarations to top of scope
+*/
+
+let funstuff=function(a,b){
+    var c,d;
+    let e,f;
+    var g=4;
+    if(a>b){
+        var g=3;
+        let h=10;
+        const j=3;
+        i;
+
+    }
+}
