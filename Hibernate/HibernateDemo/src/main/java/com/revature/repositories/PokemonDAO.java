@@ -112,7 +112,7 @@ public class PokemonDAO implements IPokemonDAO {
 		
 		Root<Pokemon> root = query.from(Pokemon.class);
 		
-		Join<Pokemon, Trainer> join = root.join("trainer", JoinType.INNER);
+		Join<Pokemon, Trainer> join = root.join("trainers", JoinType.INNER);
 		
 		query.select(root).where(builder.equal(join.get("id"), t.getId()));
 		

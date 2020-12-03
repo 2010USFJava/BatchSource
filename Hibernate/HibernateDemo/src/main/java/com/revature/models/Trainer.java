@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -17,6 +19,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
+@NamedQueries({
+	@NamedQuery(name = "getAll", query = "FROM Trainer"),
+	@NamedQuery(name = "getTrainerByPokeType", query = "SELECT t FROM Trainer t INNER JOIN t.pokemon as p WHERE p.type = :type")
+})
 
 @Entity
 @Table(name = "trainers")
@@ -47,6 +55,7 @@ public class Trainer {
 	 * REFRESH: Operation to reload the cache from the DB (If we reload the trainer data from DB, do we also do so for the pokemon?)
 	 */
 	@JsonManagedReference
-	@OneToMany(mappedBy = "trainer", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	@ManyToMany(mappedBy = "trainers", fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+//	@JoinTable // Optional, will use defaults if not used
 	private List<Pokemon> pokemon;
 }

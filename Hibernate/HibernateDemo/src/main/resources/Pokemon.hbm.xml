@@ -15,6 +15,12 @@
 			</type>
 		</property>
 		
-		<many-to-one name="trainer" fetch="join" column="something"></many-to-one>
+		<!-- <many-to-one name="trainer" fetch="join" column="something"></many-to-one> -->
+		
+		<list name="trainers" table="my_join_table">
+			<key column = "pokemon_id" />
+			<index />
+			<many-to-many entity-name="com.revature.models.Trainer" column="trainer_id" />
+		</list>
 	</class>
 </hibernate-mapping>

@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
@@ -11,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data @AllArgsConstructor @NoArgsConstructor @ToString(exclude = {"trainer"})
+@Data @AllArgsConstructor @NoArgsConstructor @ToString(exclude = {"trainers"})
 public class Pokemon {
 
 	@PositiveOrZero
@@ -23,5 +25,5 @@ public class Pokemon {
 	private Type type;
 	
 	@JsonBackReference
-	private Trainer trainer;
+	private List<Trainer> trainers;
 }

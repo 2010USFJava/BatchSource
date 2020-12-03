@@ -1,11 +1,13 @@
 package com.revature;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +22,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		// this object is in the TRANSIENT state
-		Pokemon p = new Pokemon(0, "Bulbasaur", Type.Grass, null);
+		Pokemon p = new Pokemon(0, "Bulbasaur", Type.Grass, new ArrayList<>());
 		
 		System.out.println(p.getName());
 
@@ -46,7 +48,7 @@ public class Driver {
 //		System.out.println(p.equals(fromDB));
 //		System.out.println(p == fromDB);
 		
-		Pokemon p2 = new Pokemon(0, "Charmander", Type.Fire, null);
+		Pokemon p2 = new Pokemon(0, "Charmander", Type.Fire, new ArrayList<>());
 		
 		s.save(p2);
 		
@@ -100,7 +102,7 @@ public class Driver {
 		s.save(ash);
 		
 		for (Pokemon poke : all) {
-			poke.setTrainer(ash);
+			poke.getTrainers().add(ash);
 			ash.getPokemon().add(poke);
 		}
 		
@@ -121,6 +123,25 @@ public class Driver {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		
+		tx.commit();
+		
+		
+		System.out.println("----------------------------------------------");
+		
+		Query<Trainer> query = s.createNamedQuery("getTrainerByPokeType", Trainer.class);
+		
+		query.setParameter("type", Type.Fire);
+		
+		List<Trainer> fireTrainers = query.getResultList();
+		
+		System.out.println(fireTrainers);
+		
+		query.setParameter("type", Type.Electric);
+		
+		List<Trainer> electricTrainers = query.getResultList();
+		
+		System.out.println(electricTrainers);
 	}
 
 }
