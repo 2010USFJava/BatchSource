@@ -5,16 +5,16 @@
 <hibernate-mapping package="com.revature.models">
 	<class name="Pokemon" table="pokemon">
 		<id name="id" type="int" column="poke_id">
-			<generator class="native"></generator>
+			<generator class="identity"></generator>
 		</id>
 		
-		<property name="name" type="string"></property>
+		<property name="name" type="string" length="30" not-null="true"></property>
 		<property name="type">
 			<type name="org.hibernate.type.EnumType">
 				<param name="enumClass">com.revature.models.Type</param>
 			</type>
 		</property>
 		
-		<many-to-one name="trainer" fetch="join"></many-to-one>
+		<many-to-one name="trainer" fetch="join" column="something"></many-to-one>
 	</class>
 </hibernate-mapping>

@@ -1,12 +1,16 @@
 package com.revature;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Pokemon;
+import com.revature.models.Trainer;
 import com.revature.models.Type;
 import com.revature.repositories.IPokemonDAO;
 import com.revature.repositories.PokemonDAO;
@@ -82,11 +86,41 @@ public class Driver {
 		
 		System.out.println(set);
 		
-		pokemonDAO.delete(all.get(1));
+//		pokemonDAO.delete(all.get(1));
+//		
+//		set = pokemonDAO.findAllAsSet();
+//		
+//		System.out.println(set);
 		
-		set = pokemonDAO.findAllAsSet();
 		
-		System.out.println(set);
+		System.out.println("----------------------------------------------");
+		
+		Trainer ash = new Trainer(0, "Ash Ketchum", new ArrayList<>());
+		
+		s.save(ash);
+		
+		for (Pokemon poke : all) {
+			poke.setTrainer(ash);
+			ash.getPokemon().add(poke);
+		}
+		
+		List<Pokemon> ashsPokes = pokemonDAO.findByTrainer(ash);
+		
+		System.out.println(ashsPokes.equals(all));
+		
+		System.out.println(ashsPokes == all);
+		
+		System.out.println(ashsPokes);
+		
+		System.out.println(ash);
+		
+		ObjectMapper om = new ObjectMapper();
+		
+		try {
+			System.out.println(om.writeValueAsString(ash));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
