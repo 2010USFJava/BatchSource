@@ -1,0 +1,12 @@
+<!--This html file is used to display the information we get from the poke api 
+    Data binding! {{}} is a type of one way data binding called String Interpolation.
+    It is used to pass data from our TS code to the HTML
+    Specificallly, we want the JSON from the PokeAPI for a specific pokemon
+    to source an instance of our pokemon interface. We will then use that
+    info (held in our TS code) and bind it to this html/dom. Notice this 
+    component's ts file doesn't house the pokemon instance. That's what the @Input 
+    is used for
+  -->
+
+<h2>{{name}}</h2>
+<img src={{spriteUrl}}/>

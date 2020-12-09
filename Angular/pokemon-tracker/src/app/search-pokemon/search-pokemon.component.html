@@ -1,0 +1,5 @@
+<h2>Search for Pokemon!</h2>
+<input [(ngModel)]="pokemon.name" type="text"placeholder="Pokemon Name"/>
+<button (click)= "onClick()">Search</button>
+<br>
+<app-pokemon-details [name]="pokemon.name" [spriteUrl]="pokemon.sprites.front_default"></app-pokemon-details>

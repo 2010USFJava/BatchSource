@@ -74,3 +74,42 @@ var Star = /** @class */ (function () {
 }());
 var Sun = new Star("The Sun", "Bright Thingy", 1, 9);
 Sun.fusion();
+var Animal = /** @class */ (function () {
+    //When you add access modifiers in the parameter, it will automcatily assign it as a property 
+    //questions marks in the constructor makes the parameter optional 
+    // each parameter to the right of the question mark muyst also be optional
+    function Animal(age, name, breed) {
+        this.age = age;
+        this.name = name;
+        this.breed = breed;
+    }
+    Object.defineProperty(Animal.prototype, "Name", {
+        get: function () {
+            return this.name;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Animal.prototype, "Age", {
+        get: function () {
+            return this.age;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Animal.prototype, "Breed", {
+        get: function () {
+            console.log("double check to make sure");
+            return this.breed;
+        },
+        set: function (breed) {
+            this.breed = breed;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Animal;
+}());
+var dog = new Animal(null, null, null);
+dog.Breed = "golden";
+console.log(dog.Breed);

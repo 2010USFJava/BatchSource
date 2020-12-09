@@ -109,3 +109,40 @@ class Star implements Moon{
 let Sun:Star= new Star("The Sun", "Bright Thingy",1,9);
 
 Sun.fusion();
+
+interface A{}
+interface B{}
+
+
+// class Animal implements A,B{
+  
+//     //When you add access modifiers in the parameter, it will automcatily assign it as a property 
+//     //questions marks in the constructor makes the parameter optional 
+//     // each parameter to the right of the question mark must also be optional
+//     constructor(private age?: number, private name?: string,  private breed?: string){
+   
+
+//     }
+
+//     get Name(): string{
+//         return this.name;
+//     }
+
+//     get Age(): number{
+//         return this.age;
+//     }
+
+//     get Breed(): string {
+//         console.log("double check to make sure")
+//         return this.breed;
+//     }
+
+//     set Breed(breed: string) {
+//         this.breed = breed;
+//     }
+
+// }
+
+// let dog: Animal = new Animal(null,null, null);
+// dog.Breed = "golden";
+// console.log(dog.Breed);
