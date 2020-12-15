@@ -109,3 +109,72 @@ java.io.FileNotFoundException: http://download.eclipse.org/usssdk/drops/nightly/
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:78)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-15 14:16:57.838
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2020-12-15 14:16:57.842
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.ui 2 2 2020-12-15 14:22:00.746
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:23:59.414
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:23:59.416
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@6a9d572[org.springframework.tooling.boot.ls:1.20.0.202007271426(id=1828)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:23:59.446
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:23:59.644
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:04.834
+!MESSAGE Boot LS startup time from start to initialized: 5334ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:04.944
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.sWSLzwAmisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:04.962
+!MESSAGE Creating project sorter...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:04.971
+!MESSAGE Creating project sorter... DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:04.998
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.010
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.012
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.012
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.013
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.sWSLzwAm => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.017
+!MESSAGE classpath=30 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.019
+!MESSAGE buffering callback sts4.classpath.sWSLzwAm SpringIntro false 30
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.020
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.026
+!MESSAGE classpath=69 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.032
+!MESSAGE buffering callback sts4.classpath.sWSLzwAm DummyProject false 69
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.033
+!MESSAGE executing callback sts4.classpath.sWSLzwAm 2 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-15 14:24:05.059
+!MESSAGE executing callback sts4.classpath.sWSLzwAm SUCCESS [done]
