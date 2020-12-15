@@ -3,6 +3,7 @@ package com.revature;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.revature.beans.Coach;
+import com.revature.beans.FootballCoach;
 
 public class SpringDriver {
 	public static void main(String[] args) {
@@ -10,6 +11,11 @@ public class SpringDriver {
 		
 		Coach coach= context.getBean("myCoach",Coach.class);
 		System.out.println(coach.getDailyWorkout());
+		System.out.println(coach.getMotivation());
+		
+		FootballCoach footballCoach= context.getBean("myFootballCoach",FootballCoach.class);
+		System.out.println(footballCoach.getDailyWorkout());
+		System.out.println(footballCoach.getMotivation());
 		
 		context.close();
 	}

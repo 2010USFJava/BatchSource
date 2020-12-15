@@ -1,6 +1,21 @@
 package com.revature.beans;
 
+import com.revature.services.MotivationService;
+
 public class TrackCoach implements Coach{
+	private MotivationService motivationService;
+	
+	
+	//Define a constructor for dependency injection
+	public TrackCoach(MotivationService motivationService) {
+		super();
+		this.motivationService = motivationService;
+	}
+
+	public TrackCoach() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public String getDailyWorkout() {
@@ -10,8 +25,7 @@ public class TrackCoach implements Coach{
 
 	@Override
 	public String getMotivation() {
-		// TODO Auto-generated method stub
-		return null;
+		return "The track coach says: "+motivationService.getMotivation();
 	}
 
 }

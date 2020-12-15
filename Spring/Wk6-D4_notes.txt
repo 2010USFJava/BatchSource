@@ -1,0 +1,13 @@
+The CrudRepository interface declares many methods:
+
+	+ void delete(T entity) 
+		- deletes the entity whose id is given as a method parameter
+	
+	+ Iterable<T> findAll()
+		- returns all entities that are saved to the database
+
+	+ findOne(Long id) method 
+		- returns the entity whose id is given as method parameter; if no entity is found, returns null
+
+	+ T save(T entity)
+		- saves the entity given as a method parameter and returns the persisted entity

@@ -7,6 +7,20 @@
 						http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context.xsd">
 		<!-- Define our Coach bean -->				
-	<bean id="myCoach" class="com.revature.beans.BaseballCoach"></bean>				
-						
+	<bean id="myCoach" class="com.revature.beans.BaseballCoach">
+	<!-- Inject the dependency (MotivationService) using constructor injection -->
+	<constructor-arg ref="myMotivationService"/>
+	</bean>
+	
+	<!--  Define the MotivationService bean -->				
+	<bean id="myMotivationService" class="com.revature.services.MotivationServiceImpl"></bean>	
+	
+	<bean id="myFootballCoach" class="com.revature.beans.FootballCoach">
+	
+		<!-- Inject the dependency (MotivationService) using setter injection -->
+		<property name="motivationService" ref="myMotivationService"/>
+	</bean>
+	
+	
+					
 </beans>						

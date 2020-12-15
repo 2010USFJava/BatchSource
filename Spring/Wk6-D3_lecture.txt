@@ -1,0 +1,29 @@
+Spring MVC Lecture/Demos
+
+1) What is Spring MVC?
+	- Framework for building web applications in Java
+	- Based on the Model-View-Controller design pattern
+	- Leverages features of the Core Spring Framework (IOC & DI)
+	- See MVC diagram in notebook
+
+2) Discuss MVC data flow
+	- Front controller known as the DispatcherServlet
+		+ Part of the Spring Framework
+	- Controller
+		+ Created by the developer
+		+ Contains business logic
+			* Handle the HTTP request (store/retrieve data from the DB or some API)
+			* Place data in the model
+			* Send appropriate data (or a view)
+	- ViewResolver
+		+ Used to resolve JSP/JSTL view templates to HTML
+		+ Not leveraged when we are using a client-side rendering framework like Angular
+
+3) Discuss MVC configuration process
+	1) Add configurations to web.xml
+		a) Configure Spring MVC DispatcherServlet
+		b) Set up URL mappings to the DispatcherServlet
+	2) Add configuartions to dispatcher-servlet.xml
+		a) Add support for Spring component scanning
+		b) Add support for conversion, formatting, and validation
+	3) Configure Spring MVC ViewResolver
