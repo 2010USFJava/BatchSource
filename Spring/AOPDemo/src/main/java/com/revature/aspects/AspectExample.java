@@ -1,8 +1,8 @@
 package com.revature.aspects;
 
-import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Component("myAspect")
@@ -46,8 +46,26 @@ public class AspectExample {
 	 * ".." is our wildcard for our parameter list (for any number of parameters)
 	 * "*" is ALSO our wildcard for a SINGLE parameter in the parameter list
 	 */
-	@Before("execution(* *(..))")
-	public void warmingUp(JoinPoint jp) {
-		System.out.println("Stretch before your method!");
+//	@Before("execution(* *(..))")
+//	public void warmingUp(JoinPoint jp) {
+//		System.out.println("Stretch before your method!");
+//	}
+	
+	/*
+	 * AROUND EXAMPLE 
+	 * 
+	 * 		Around is the most powerful advice. It can control variables inside the method AND choose how to act based on that information. 
+	 * 		It can also halt methods from ever executing their logic. 
+	 */
+	
+	@Around("execution(* *(..))")
+	public void allaround(ProceedingJoinPoint pjp) throws Throwable{
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println("Before everything!");
+		
+		pjp.proceed();//the target method doesn't execute it's logic until this is called.
+		
+		System.out.println("relaxing afterwards");
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }
