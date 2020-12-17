@@ -27,11 +27,14 @@ public class FlashCardController {
 		this.cardService=flashCardService;
 	}
 	
-	
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<FlashCard> getAllCards(){
-		return this.cardService.getAll();
+	public String getAllCards(){
+		return "Work?";
 	}
+//	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
+//	public List<FlashCard> getAllCards(){
+//		return this.cardService.getAll();
+//	}
 	
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
 	public FlashCard getCardById(@PathVariable int id) {

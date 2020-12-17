@@ -1,5 +1,6 @@
 package com.revature;
 
+
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -28,19 +29,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:app.properties")
-public class AppConfig implements WebMvcConfigurer,WebApplicationInitializer {
+public class AppConfig implements WebMvcConfigurer, WebApplicationInitializer {
+	
 	@Value("${db.driver}")
 	private String dbDriver;
+	
 	@Value("${db.url}")
 	private String dbUrl;
+	
 	@Value("${db.username}")
 	private String dbUsername;
+	
 	@Value("${db.password}")
 	private String dbPassword;
 	
 	@Bean
 	public BasicDataSource dataSource() {
 		System.out.println("Creating BasicDataSource bean...");
+		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(dbDriver);
 		dataSource.setUrl(dbUrl);
@@ -48,8 +54,36 @@ public class AppConfig implements WebMvcConfigurer,WebApplicationInitializer {
 		dataSource.setPassword(dbPassword);
 		
 		System.out.println("BasicDataSource bean created!");
+		
 		return dataSource;
 	}
+	
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		System.out.println("Creating LocalSessionFactoryBean bean...");
+		
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setPackagesToScan("com.revature");
+		sessionFactory.setHibernateProperties(hibernateProperties());
+		
+		System.out.println("LocalSessionFactoryBean bean created!");
+		
+		return sessionFactory;
+	}
+	
+	@Bean
+	public PlatformTransactionManager hibernateTransactionManager() {
+		System.out.println("Creating PlatformTransactionManager bean...");
+		
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory().getObject());
+		
+		System.out.println("PlatformTransactionManager bean created!");
+		
+		return transactionManager;
+	}
+
 	
 	private final Properties hibernateProperties() {
 		System.out.println("Loading Hibernate properties...");
@@ -65,41 +99,16 @@ public class AppConfig implements WebMvcConfigurer,WebApplicationInitializer {
 		return hibernateProperties;
 		
 	}
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		System.out.println("Creating SessionFactoryBean bean...");
-		
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan("com.revature");
-		sessionFactory.setHibernateProperties(hibernateProperties());
-		
-		System.out.println("LocalSessionFactoryBean created!");
-		return sessionFactory;
-		
-	}
-	
-	
-	
-	@Bean
-	public PlatformTransactionManager hibernateTransactionMangager() {
-		System.out.println("Creating PlatformTransactionManager bean");
-		
-		HibernateTransactionManager transactionManager= new HibernateTransactionManager();
-		transactionManager.setSessionFactory(sessionFactory().getObject());
-		System.out.println("PlatformTransactionManager bean created!");
-		return transactionManager;
-		
-	}
-	
+
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext container = new AnnotationConfigWebApplicationContext();
 		container.register(AppConfig.class);
 		
 		servletContext.addListener(new ContextLoaderListener(container));
-		ServletRegistration.Dynamic dispatcher =servletContext.addServlet("DispatcherServlet",new DispatcherServlet(container) );
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(container));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
+		
 	}
 }
