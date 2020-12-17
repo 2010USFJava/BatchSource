@@ -19,6 +19,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableTransactionManagement
 public class AppConfig implements WebMvcConfigurer,WebApplicationInitializer {
+	private String dbDriver;
+	private String dbUrl;
+	private String dbUsername;
+	private String dbPassword;
 	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
