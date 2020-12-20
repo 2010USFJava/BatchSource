@@ -1,0 +1,35 @@
+<div class = "container">
+    <div class = "row spacer otherfont">
+        <h1>Welcome to Spring-Angular connection example!</h1>
+    </div>
+
+    <div class = "row spacer">
+        <div class = "col-8">
+            <h3>Logged in user details: {{userDetails}}</h3>
+        </div>
+        <div class = "col-4">
+            <button type = "button" class = "btn btn-info" (click) = "firstButton()">Butoon!</button>
+        </div>
+
+    </div>
+
+    <div class = "row spacer">
+        <div class = "col-8">
+            <h3>Login Attempt: {{loginMessage}}</h3>
+        </div>
+        <div class = "col-4">
+            <button type = "button" class = "btn btn-success" (click) = "secondButton()">Butoon!</button>
+        </div>
+
+    </div>
+
+    <div class = "row spacer">
+        <div class = "col-8">
+            <h3>Logout Attempt: {{logoutMessage}}</h3>
+        </div>
+        <div class = "col-4">
+            <button type = "button" class = "btn btn-warning" (click) = "otherButton()">Butoon!</button>
+        </div>
+
+    </div>
+</div>
