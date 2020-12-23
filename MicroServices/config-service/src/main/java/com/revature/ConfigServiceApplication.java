@@ -2,14 +2,14 @@ package com.revature;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
-//@EnableCircuitBreaker
+@EnableConfigServer
 @SpringBootApplication
-public class QuizServiceApplication {
+public class ConfigServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(QuizServiceApplication.class, args);
+		SpringApplication.run(ConfigServiceApplication.class, args);
 	}
 
 }

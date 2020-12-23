@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+//import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.revature.models.Flashcard;
 import com.revature.models.Quiz;
 import com.revature.repositories.QuizRepository;
@@ -68,8 +70,9 @@ public class QuizController {
 	}
 	
 	@GetMapping("/cards")
+	//@HystrixCommand(fallbackMethod="getCardsUnavailable")
 	public ResponseEntity<List<Flashcard>> getCards() {
-		List<Flashcard> all = this.restTemplate.getForObject("http://localhost:8081/flashcard", List.class);
+		List<Flashcard> all = this.restTemplate.getForObject("http://localhost:8080/flashcard", List.class);
 		
 		if(all.isEmpty()) {
 			return ResponseEntity.noContent().build();
@@ -77,4 +80,8 @@ public class QuizController {
 		
 		return ResponseEntity.ok(all);
 	}
+	
+//	public ResponseEntity<List<Flashcard>> getCardsUnavailable(){
+//		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).build();
+//	}
 }

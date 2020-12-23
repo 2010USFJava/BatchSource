@@ -1,8 +1,8 @@
 server:
-  port: 8090
+  port: 8080
 spring:
   application:
-    name: quiz-service
+    name: gateway-service
   cloud:
     config:
       discovery:
